@@ -1,2 +1,3 @@
-# clon-instagram
-Clon de instragram con Graphql, Node, MongoDB, React
+#Clon de INSTAGRAM con node, graphql, react, mongodb
+
+#configuracion de graphql y node
