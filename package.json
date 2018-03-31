@@ -18,7 +18,9 @@
     "express": "^4.16.3",
     "graphql": "^0.13.2",
     "graphql-tools": "^2.23.1",
+    "merge-graphql-schemas": "^1.5.1",
     "mongoose": "^5.0.12",
+    "path": "^0.12.7",
     "typed-graphql": "^1.0.2"
   }
 }
