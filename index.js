@@ -4,6 +4,7 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import mongoose from 'mongoose';
 mongoose.Promise = global.Promise;
+import cors from 'cors';
 
 //import typeDefs from  './schemas';
 //import resolvers from './resolvers';
@@ -25,16 +26,19 @@ const schema = makeExecutableSchema({
 const PORT = 3000;
 
 const app = express();
+app.use(cors({
+	origin:["http://localhost:3001"]
+}))
 
 // bodyParser is needed just for POST.
-app.use('/graphql', bodyParser.json(), graphqlExpress({ 
+app.use('/graphql', bodyParser.json(), graphqlExpress({
 	schema,
 	context:{
 		models,
 		user:{
 			_id:1, username: 'bob'
 		}
-	} 
+	}
 }));
 app.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' })); // if you want GraphiQL enabled
 
@@ -47,4 +51,3 @@ mongoose.connect('mongodb://localhost:27017/clon-instagram', {useMongoClient: tr
 			});
 		}
 	)
-
