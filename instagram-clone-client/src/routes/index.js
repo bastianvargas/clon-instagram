@@ -7,20 +7,16 @@ import {
 } from "react-router-dom";
 
 import Home from './home'
+import Login from './login'
 
-const Toolbar = () => [
-	<Link to= "/">Home</Link>,
-	<Link to= "/register">Register</Link>
-]
-
-
-const Register =  () => [<Toolbar />,<h1>Register</h1>]
+import 'semantic-ui-css/semantic.min.css';
+import '../css/main.css';
 
 export default () =>(
 	<Router>
 		<Switch>
 			<Route path="/" exact component={Home} />
-			<Route path="/register" exact component={Register}/>
+			<Route path="/Login" exact component={Login}/>
 		</Switch>
 	</Router>
 )
