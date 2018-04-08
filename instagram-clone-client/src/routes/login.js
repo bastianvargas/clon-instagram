@@ -1,6 +1,11 @@
 import React from 'react';
 import {Grid} from 'semantic-ui-react';
+import {graphql} from 'react-apollo';
 
+//utils
+import queries from '../utils/queries';
+
+//components
 import Signin from './login/Signin';
 import Signup from './login/Signup';
 import LostPassword from './login/LostPassword';
@@ -42,6 +47,14 @@ class Login extends React.Component{
     console.log(args);
   }
 
+  handleRegister = async(ev, args)=>{
+    console.log(args);
+    const response = await this.props.mutate({
+      variables: args
+    })
+    console.log('Graphql response:', response);
+  }
+
   render(){
 
     const {showLogin, showRegister, showLostPassword} = this.state;
@@ -54,7 +67,7 @@ class Login extends React.Component{
           </Grid.Column>
           <Grid.Column>
             {showLogin  && <Signin styles={styles} handleClick={this.showRegister} handleSubmit={this.handleLogin} />}
-            {showRegister  && <Signup styles={styles} handleClick={this.showLogin} />}
+            {showRegister  && <Signup styles={styles} handleClick={this.showLogin} handleSubmit={this.handleRegister}/>}
             {/* {showLostPassword  && <LostPassword styles={styles} />} */}
           </Grid.Column>
         </Grid.Row>
@@ -62,4 +75,5 @@ class Login extends React.Component{
     )
   }
 }
-export default Login
+
+export default graphql(queries.mutation.createUser)(Login)

@@ -12,7 +12,7 @@ export default ({styles,handleClick, handleSubmit}) => {
   return (
     <div>
       <div style={styles.box}>
-        <img src='images/logo.png'/>
+        <img alt="logo" src='images/logo.png'/>
         <Form onSubmit={(ev)=>handleSubmit(ev, args)}>
           <Form.Field>
             <Form.Input name="email" onChange={handleChange } placeholder='email o  nombre de usuario' icon={<Icon name="check circle outline" size="large" />} />
